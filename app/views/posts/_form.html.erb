@@ -1,0 +1,45 @@
+<%= form_for @post, html: { multipart: true } do |f| %>
+
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :Ad %><br>
+    <%= f.text_field :Ad %>
+  </div>
+  <div class="field">
+    <%= f.label :Soyad %><br>
+    <%= f.text_field :Soyad %>
+  </div>
+  <div class="field">
+    <%= f.label :Yas %><br>
+    <%= f.number_field :Yas %>
+  </div>
+  <div class="field">
+    <%= f.label :Memleket %><br>
+    <%= f.text_field :Memleket %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.collection_select:category_id, Category.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :Dusunceleriniz %><br>
+    <%= f.text_area :Dusunceleriniz %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+  
